@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "transit-polarization"
+version = "0.1.0"
+description = "Transits of limb-polarised stars in Stokes I, Q, U using jaxoplanet and the Kostogryz & Berdyugina (2015) tables"
+requires-python = ">=3.10"
+# Tested with jaxoplanet 0.1.0 / jax 0.7.1; jaxoplanet's starry API is still evolving.
+dependencies = ["jax", "jaxoplanet>=0.1,<0.2", "numpy", "scipy"]
+
+[project.optional-dependencies]
+notebook = ["matplotlib", "tqdm", "ipykernel"]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["transit_polarization"]
+
+[tool.setuptools.package-data]
+transit_polarization = ["data/*.tsv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
